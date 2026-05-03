@@ -1,0 +1,6 @@
+img/**/*.png
+img/**/*.jpg
+img/**/*.jpeg
+
+_imgconv/
+.claude/
