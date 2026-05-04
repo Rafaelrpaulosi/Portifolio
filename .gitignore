@@ -4,3 +4,4 @@ img/**/*.jpeg
 
 _imgconv/
 .claude/
+node_modules/
