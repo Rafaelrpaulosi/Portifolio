@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rafael Paulosi — Product Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Roboto:wght@400;500;600;700&family=Sora:wght@300;400;500&display=swap" rel="stylesheet">
+<noscript><style>.cards-animating .project-card{opacity:1!important;transform:none!important;} .cards-animating .card-img-wrap img{opacity:1!important;}</style></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -142,7 +143,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .project-card.active{background:var(--surface2);}
 .project-card.active::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);}
 .card-img-wrap{width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;}
-.card-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 0.4s ease;filter:brightness(0.7);}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 0.4s ease,opacity 0.5s ease,filter 0.4s ease;filter:brightness(0.7);}
 .project-card:hover .card-img-wrap img,.project-card.active .card-img-wrap img{transform:scale(1.03);filter:brightness(0.9);}
 .card-info{padding:20px 24px;}
 .card-num{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
@@ -154,6 +155,31 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .case-content{display:none;}
 .case-content.active{display:block;animation:fadeUp 0.5s ease;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* skeleton shimmer */
+.card-img-wrap::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--surface2) 25%,rgba(255,255,255,0.07) 50%,var(--surface2) 75%);background-size:200% 100%;animation:cardShimmer 1.6s infinite linear;transition:opacity 0.4s ease;}
+[data-theme="light"] .card-img-wrap::before{background:linear-gradient(90deg,var(--surface2) 25%,rgba(0,0,0,0.05) 50%,var(--surface2) 75%);background-size:200% 100%;}
+.card-img-wrap.img-loaded::before{opacity:0;pointer-events:none;}
+@keyframes cardShimmer{from{background-position:200% 0;}to{background-position:-200% 0;}}
+
+/* image lazy fade-in */
+.cards-animating .card-img-wrap img{opacity:0;}
+.cards-animating .card-img-wrap.img-loaded img{opacity:1;}
+
+/* staggered card entrance */
+.cards-animating .project-card{opacity:0;transform:translateY(22px);}
+.cards-animating .project-card.card-visible{animation:cardEntrance 0.55s cubic-bezier(0.22,1,0.36,1) forwards;}
+.cards-animating .project-card:nth-child(1).card-visible{animation-delay:0ms;}
+.cards-animating .project-card:nth-child(2).card-visible{animation-delay:110ms;}
+.cards-animating .project-card:nth-child(3).card-visible{animation-delay:220ms;}
+@keyframes cardEntrance{to{opacity:1;transform:translateY(0);}}
+
+/* reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .cards-animating .project-card,.cards-animating .project-card.card-visible{animation:none;opacity:1;transform:none;}
+  .card-img-wrap::before{animation:none;}
+  .case-content.active{animation:none;}
+}
 
 .intro-section{padding:100px 0 80px;display:grid;grid-template-columns:1fr 280px;gap:80px;border-bottom:1px solid var(--border);}
 .intro-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
@@ -1466,7 +1492,7 @@ footer {
 <section id="projetos" class="selector-section">
   <div class="container">
   <div class="selector-label">Selecione um projeto</div>
-  <div class="project-cards">
+  <div class="project-cards cards-animating">
 
     <div class="project-card active" onclick="showProject('emed', this)">
       <div class="card-img-wrap"><img src="img/emed/emed-preview.webp" alt="eMed4all" width="8192" height="6144" loading="eager" fetchpriority="high">
@@ -1485,7 +1511,7 @@ footer {
 
     <div class="project-card" onclick="showProject('tcuida', this)">
       <div class="card-img-wrap">
-        <img src="img/tcuida/tcuida-preview.webp" alt="tCuida / Minha Saúde" width="13320" height="9992" loading="eager" fetchpriority="high">
+        <img src="img/tcuida/tcuida-preview.webp" alt="tCuida / Minha Saúde" width="1066" height="800" loading="lazy">
       </div>
       <div class="card-info">
         <div class="card-num">02 — Univision · 2023–2025</div>
@@ -1501,10 +1527,10 @@ footer {
 
     <div class="project-card" onclick="showProject('yuni', this)">
       <div class="card-img-wrap">
-        <img src="img/superApp/superapp-preview.webp" alt="SuperApp Unimed" width="6400" height="4800" loading="eager" fetchpriority="high">
+        <img src="img/superApp/superapp-preview.webp" alt="SuperApp Unimed" width="1067" height="800" loading="lazy">
       </div>
       <div class="card-info">
-        <div class="card-num">03 — Yuni Digital · 2024–2025</div>
+        <div class="card-num">03 — Yuni Digital · 2025–2026</div>
         <div class="card-name">SuperApp Unimed</div>
         <div class="card-desc">Convergência de 3 casas num SuperApp nacional</div>
         <div class="card-tags">
@@ -1755,7 +1781,7 @@ footer {
       </ul>
       </div>
       <div class="desafio-bleed-col">
-        <img src="img/emed/design-system.png.png" alt="eMedBR — Design System" class="desafio-img-bleed" loading="lazy">
+        <img src="img/emed/design.webp" alt="eMedBR — Design System" class="desafio-img-bleed" loading="lazy">
       </div>
     </div>
   </div>
@@ -2023,7 +2049,7 @@ footer {
     </div>
     <div class="intro-meta">
       <div class="meta-item"><div class="meta-label">Empresa</div><div class="meta-value">Yuni Digital</div></div>
-      <div class="meta-item"><div class="meta-label">Período</div><div class="meta-value">Jun 2024 – Mar 2025</div></div>
+      <div class="meta-item"><div class="meta-label">Período</div><div class="meta-value">Jun 2025 – Mar 2026</div></div>
       <div class="meta-item"><div class="meta-label">Programa</div><div class="meta-value">Sinergia — Unimed do Brasil</div></div>
       <div class="meta-item"><div class="meta-label">Plataforma</div><div class="meta-value">Mobile, tablet e web</div></div>
       <div class="meta-item"><div class="meta-label">Perfis</div><div class="meta-value">Beneficiário e Cooperado</div></div>
@@ -2031,7 +2057,7 @@ footer {
   </div>
 
   <div class="superapp-preview-wrap">
-    <img src="img/superApp/superapp-preview.webp" alt="SuperApp Unimed — Preview" class="superapp-preview-img" width="6400" height="4800" loading="eager" fetchpriority="high">
+    <img src="img/superApp/superapp-preview.webp" alt="SuperApp Unimed — Preview" class="superapp-preview-img" width="1067" height="800" loading="eager" fetchpriority="high">
   </div>
 
   <div class="cenario-section">
@@ -2330,6 +2356,35 @@ function showProject(name, card) {
     document.getElementById("case-" + name).scrollIntoView({ behavior: "smooth", block: "start" });
   }, 50);
 }
+
+// skeleton + staggered entrance
+(function() {
+  var grid = document.querySelector(".project-cards");
+  if (!grid) return;
+
+  // mark each image wrapper as loaded when its image is ready
+  grid.querySelectorAll(".project-card").forEach(function(card) {
+    var wrap = card.querySelector(".card-img-wrap");
+    var img  = card.querySelector("img");
+    if (!wrap || !img) return;
+    function markLoaded() { wrap.classList.add("img-loaded"); }
+    if (img.complete && img.naturalWidth > 0) {
+      requestAnimationFrame(markLoaded);
+    } else {
+      img.addEventListener("load",  markLoaded);
+      img.addEventListener("error", markLoaded);
+    }
+  });
+
+  // staggered entrance via IntersectionObserver
+  new IntersectionObserver(function(entries, obs) {
+    if (!entries[0].isIntersecting) return;
+    obs.disconnect();
+    grid.querySelectorAll(".project-card").forEach(function(card, i) {
+      setTimeout(function() { card.classList.add("card-visible"); }, i * 110);
+    });
+  }, { threshold: 0.1 }).observe(grid);
+})();
 
 var _emedIdx = 0;
 function emedMove(dir) { emedGoTo(_emedIdx + dir); }
