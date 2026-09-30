@@ -6,6 +6,7 @@
 <title>Rafael Paulosi | Product Designer</title>
 <meta name="description" content="Product Designer com 5 anos em produtos digitais complexos. SuperApp Unimed (+2M downloads), Design Systems do zero e IA aplicada ao design.">
 <meta name="theme-color" content="#0D0D0D">
+<script>document.documentElement.classList.add("js");</script>
 <link rel="canonical" href="https://rafaelrpaulosi.github.io/Portifolio/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
@@ -31,14 +32,14 @@
 :root{
   --bg:#0D0D0D;--surface:#161616;--surface2:#1E1E1E;
   --border:rgba(255,255,255,0.08);--border-hover:rgba(255,255,255,0.18);
-  --text:#F0EDE6;--muted:#888880;--accent:#C8F060;
+  --text:#F0EDE6;--muted:#9C9C94;--accent:#C8F060;--accent-ink:#0D0D0D;
   --hero-gradient: linear-gradient(to right,rgba(13,13,13,1) 0%,rgba(13,13,13,0.85) 40%,rgba(13,13,13,0.3) 70%,rgba(13,13,13,0.15) 100%);
 }
 [data-theme="light"]{
   --bg:#F5F3EE;--surface:#FFFFFF;--surface2:#EFEFEA;
   --border:rgba(0,0,0,0.08);--border-hover:rgba(0,0,0,0.18);
-  --text:#1A1814;--muted:#6B6860;--accent:#5B7F00;
-  --hero-gradient: linear-gradient(to right,rgba(245,243,238,1) 0%,rgba(245,243,238,0.85) 40%,rgba(245,243,238,0.3) 70%,rgba(245,243,238,0.15) 100%);
+  --text:#1A1814;--muted:#55524A;--accent:#466400;--accent-ink:#FFFFFF;
+  --hero-gradient: linear-gradient(to right,rgba(245,243,238,1) 0%,rgba(245,243,238,0.9) 42%,rgba(245,243,238,0.5) 72%,rgba(245,243,238,0.35) 100%);
 }
 [data-theme="light"] nav{
   background:rgba(245,243,238,0.92);
@@ -277,18 +278,6 @@ a.outro-card{display:block;text-decoration:none;color:inherit;}
 .estudos-mais{margin-top:24px;font-size:13px;}
 .estudos-mais a{color:var(--accent);text-decoration:none;}
 .estudos-mais a:hover{text-decoration:underline;}
-.sobre-grid{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:64px;align-items:center;}
-.sobre-foto{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;border-radius:16px;border:1px solid var(--border);display:block;background:var(--surface);}
-.sobre-texto p{font-size:16px;line-height:1.85;color:var(--text);margin-bottom:20px;max-width:62ch;}
-.sobre-fatos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:32px 0 28px;}
-.sobre-fato{background:var(--surface);padding:16px 18px;}
-.sobre-fato-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.sobre-fato-valor{font-size:13px;color:var(--text);line-height:1.5;}
-.sobre-acoes{display:flex;flex-wrap:wrap;gap:12px;}
-.sobre-btn{display:inline-block;font-size:13px;padding:12px 22px;border-radius:100px;border:1px solid var(--border-hover);color:var(--text);text-decoration:none;transition:border-color 0.2s,background 0.2s;}
-.sobre-btn:hover{border-color:var(--accent);}
-.sobre-btn--primario{background:var(--accent);border-color:var(--accent);color:#0D0D0D;font-weight:500;}
-@media (max-width:900px){.sobre-grid{grid-template-columns:1fr;gap:32px;}.sobre-foto{max-width:360px;}.sobre-fatos{grid-template-columns:1fr;}}
 
 .formacao-section{padding:100px 0;border-top:1px solid var(--border);}
 .formacao-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px;}
@@ -1594,14 +1583,162 @@ footer {
 .typo-fam-w-num{font-size:11px;color:var(--muted);letter-spacing:0.06em;}
 @media(max-width:1024px){.typo-scale-grid{overflow-x:auto;}.typo-scale-col{min-width:72px;}.typo-lh-grid{grid-template-columns:repeat(4,1fr);}}
 @media(max-width:768px){.typo-section{padding:60px 24px;}.typo-lh-grid{grid-template-columns:1fr 1fr;}.typo-fam-grid{grid-template-columns:1fr;}.typo-fam-aa{font-size:60px !important;}}
+/* ===== UI v2: menu, tema, botoes, contraste ===== */
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px;}
+nav{gap:24px;padding-left:clamp(20px,4vw,56px)!important;padding-right:clamp(20px,4vw,56px)!important;}
+.nav-logo{white-space:nowrap;flex-shrink:0;}
+.nav-links{flex-wrap:nowrap;gap:clamp(14px,1.9vw,32px);margin-left:auto;margin-right:8px;}
+.nav-links a{white-space:nowrap;}
+.nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.theme-toggle,.nav-toggle{width:40px;height:40px;padding:0;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:none;border:1px solid var(--border-hover);color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s,background .2s;}
+.theme-toggle:hover,.nav-toggle:hover{color:var(--text);border-color:var(--text);background:var(--surface2);}
+.theme-toggle svg,.nav-toggle svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.theme-toggle .icon-sun{display:none;}
+[data-theme="light"] .theme-toggle .icon-moon{display:none;}
+[data-theme="light"] .theme-toggle .icon-sun{display:block;}
+.nav-toggle{display:none;}
+@media(max-width:1100px){
+  .nav-toggle{display:inline-flex;}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;padding:6px clamp(20px,4vw,56px) 14px;background:var(--bg);border-bottom:1px solid var(--border);}
+  nav.menu-open .nav-links{display:flex;}
+  .nav-links a{padding:15px 0;font-size:15px;border-top:1px solid var(--border);}
+  .nav-links a:first-child{border-top:none;}
+}
+.hero-stats{gap:32px;padding:20px 28px;border-radius:16px;border:1px solid var(--border-hover);background:var(--surface);background:color-mix(in srgb,var(--surface) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
+.sobre-acoes{display:flex;flex-wrap:wrap;gap:12px;}
+.sobre-btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px 0 20px;border-radius:100px;border:1px solid var(--border-hover);background:var(--surface);color:var(--text);font-family:"Sora",sans-serif;font-size:14px;font-weight:500;text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s,border-color .2s,background .2s,filter .2s;}
+.sobre-btn svg{width:18px;height:18px;flex-shrink:0;}
+.sobre-btn svg.stroke{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+.sobre-btn svg.solid{fill:currentColor;}
+.sobre-btn:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 10px 24px rgba(0,0,0,.18);}
+.sobre-btn:active{transform:translateY(0);box-shadow:0 1px 2px rgba(0,0,0,.08);}
+.sobre-btn--primario{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+.sobre-btn--primario:hover{filter:brightness(1.08);}
+.sobre-btn--linkedin:hover{border-color:#0A66C2;color:#0A66C2;}
+[data-theme="dark"] .sobre-btn--linkedin:hover,:root:not([data-theme="light"]) .sobre-btn--linkedin:hover{color:#70B5F9;border-color:#70B5F9;}
+@media(max-width:520px){.sobre-btn{flex:1 1 100%;justify-content:center;}}
+
+/* ===== SOBRE v3 e HABILIDADES ===== */
+.sobre-grid{display:grid;grid-template-columns:minmax(280px,440px) 1fr;gap:clamp(36px,5vw,72px);align-items:start;}
+.sobre-card{position:sticky;top:110px;margin:0;border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:#1a1a1a;box-shadow:0 30px 60px -24px rgba(0,0,0,.5);}
+.sobre-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block;}
+.sobre-shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,8,.55) 0%,rgba(8,8,8,0) 26%);}
+.sobre-label{position:absolute;top:22px;left:24px;color:#fff;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;line-height:1.55;}
+.sobre-label span{display:block;font-weight:400;opacity:.78;}
+.sobre-tag{position:absolute;top:20px;right:20px;display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 10px;border-radius:100px;color:#fff;font-size:11px;letter-spacing:.06em;text-transform:uppercase;line-height:1.25;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+.sobre-tag svg{width:16px;height:16px;flex-shrink:0;fill:none;stroke:#C8F060;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.sobre-statement{position:absolute;left:26px;right:26px;bottom:28px;color:#fff;font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(22px,3.1vw,40px);line-height:1.02;letter-spacing:-.01em;text-transform:uppercase;}
+.sobre-statement em{font-style:normal;color:#C8F060;}
+.sobre-titulo{font-family:"Playfair Display",serif;font-weight:400;font-size:clamp(30px,3.6vw,46px);line-height:1.1;color:var(--text);margin-bottom:32px;max-width:18ch;}
+.sobre-titulo em{font-style:italic;color:var(--accent);}
+.sobre-cap{list-style:none;margin-bottom:36px;}
+.sobre-cap li{display:block;padding:26px 0;border-top:1px solid var(--border);}
+.sobre-cap-head{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;}
+.sobre-cap li:last-child{border-bottom:1px solid var(--border);}
+.sobre-cap-num{font-family:"Playfair Display",serif;font-size:26px;line-height:1;color:var(--accent);}
+.sobre-cap-nome{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.sobre-cap p{font-size:16px;line-height:1.8;color:var(--text);max-width:64ch;}
+.sobre-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px;}
+.sobre-stat{padding:20px;border-radius:16px;background:var(--surface);border:1px solid var(--border);}
+.sobre-stat b{display:block;font-family:"Playfair Display",serif;font-weight:400;font-size:34px;line-height:1;color:var(--text);}
+.sobre-stat span{display:block;margin-top:10px;font-size:12px;line-height:1.45;color:var(--muted);}
+.sobre-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.sobre-meta span{font-size:12px;padding:8px 14px;border-radius:100px;border:1px solid var(--border-hover);color:var(--text);}
+@media(max-width:900px){
+  .sobre-grid{grid-template-columns:1fr;}
+  .sobre-card{position:relative;top:0;max-width:460px;}
+  .sobre-cap li{padding:22px 0;}
+  .sobre-stats{grid-template-columns:1fr;}
+}
+
+/* ===== LINKS e TRAJETORIA ===== */
+.sobre-links{margin-top:8px;}
+.sobre-links-label{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.sobre-links a{display:flex;align-items:center;gap:12px;width:fit-content;padding:3px 0;font-family:"Sora",sans-serif;font-weight:400;font-size:clamp(26px,2.8vw,34px);line-height:1.25;letter-spacing:-.02em;color:var(--text);text-decoration:none;}
+.sobre-links a svg{width:.55em;height:.55em;flex-shrink:0;fill:none;stroke:var(--muted);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s,stroke .25s;}
+.sobre-links a:hover{color:var(--accent);}
+.sobre-links a:hover svg{stroke:var(--accent);transform:translate(3px,-3px);}
+.sobre-links a[download]:hover svg{transform:translateY(3px);}
+.traj-grid{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:clamp(24px,5vw,72px);}
+.traj-label{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text);height:fit-content;position:sticky;top:110px;}
+.traj-label i{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;}
+.traj-list{list-style:none;}
+.traj-item{display:grid;grid-template-columns:150px minmax(0,1fr) minmax(0,1.15fr);gap:clamp(16px,3vw,40px);align-items:baseline;padding:26px 0;border-top:1px solid var(--border);transition:background .25s;}
+.traj-item:last-child{border-bottom:1px solid var(--border);}
+.traj-ano{font-family:"Playfair Display",serif;font-size:clamp(24px,2.4vw,30px);line-height:1;color:var(--muted);transition:color .25s;white-space:nowrap;}
+.traj-item:hover .traj-ano{color:var(--accent);}
+.traj-titulo{font-size:17px;line-height:1.35;color:var(--text);font-weight:500;}
+.traj-org{display:block;margin-top:6px;font-size:13px;color:var(--muted);font-weight:400;}
+.traj-desc{font-size:14px;line-height:1.7;color:var(--muted);}
+.traj-item.is-hoje .traj-ano{color:var(--accent);}
+.traj-hoje{display:inline-block;margin-left:10px;padding:3px 10px;border-radius:100px;font-family:"Sora",sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);vertical-align:middle;}
+@media(max-width:900px){
+  .traj-grid{grid-template-columns:1fr;}
+  .traj-label{position:static;}
+  .traj-item{grid-template-columns:1fr;gap:8px;padding:22px 0;}
+}
+
+/* Trajetoria compacta */
+#trajetoria.outros-section{padding-top:64px;padding-bottom:64px;}
+#trajetoria .section-header{margin-bottom:32px;}
+#trajetoria .section-header-title{font-size:clamp(24px,3vw,32px);}
+.traj-grid{gap:clamp(20px,4vw,56px);grid-template-columns:minmax(120px,180px) 1fr;}
+.traj-item{grid-template-columns:118px minmax(0,1fr) minmax(0,1.25fr);gap:clamp(12px,2.2vw,28px);padding:15px 0;}
+.traj-ano{font-size:clamp(17px,1.7vw,21px);}
+.traj-titulo{font-size:15px;line-height:1.3;}
+.traj-org{font-size:12px;margin-top:3px;}
+.traj-desc{font-size:13px;line-height:1.55;}
+.traj-hoje{margin-left:8px;padding:2px 8px;font-size:9px;}
+@media(max-width:900px){#trajetoria.outros-section{padding-top:48px;padding-bottom:48px;}.traj-item{grid-template-columns:1fr;gap:4px;padding:14px 0;}}
+
+/* Animacoes de rolagem */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms);will-change:opacity,transform;}
+.js .rv.in{opacity:1;transform:none;}
+.js .rv-words .wd{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.16em;margin-bottom:-.16em;}
+.js .rv-words .wi{display:inline-block;transform:translateY(115%);transition:transform 1s cubic-bezier(.2,.7,.2,1);}
+.js .rv-words.in .wi{transform:none;}
+@media(prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none;transition:none;}
+  .js .rv-words .wi{transform:none;transition:none;}
+}
+
+.habilidades-grid{grid-template-columns:repeat(5,minmax(0,1fr));}
+.habilidade{display:flex;align-items:center;min-height:64px;}
+@media(max-width:1000px){.habilidades-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(max-width:600px){.habilidades-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.habilidade{padding:14px 16px;font-size:12.5px;}}
+
+.desafios-grid--solo{grid-template-columns:minmax(0,1fr) !important;}
+.desafios-grid--solo .desafios-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:64px;}
+.desafios-grid--solo .desafios-list li:nth-child(2){border-top:1px solid var(--border);}
+@media(max-width:900px){.desafios-grid--solo .desafios-list{grid-template-columns:1fr;}.desafios-grid--solo .desafios-list li:nth-child(2){border-top:none;}}
+/* Escala tipografica: cada coluna acompanha a largura do proprio "Aa" */
+.typo-scale-grid{display:flex;flex-wrap:wrap;align-items:stretch;gap:1px;background:var(--border);overflow:hidden;}
+.typo-scale-col{flex:1 1 auto;min-width:auto;justify-content:flex-end;padding:22px 16px;border-right:none;background:var(--surface);}
+/* ===== Telas grandes (monitores largos e TV) ===== */
+.hero{min-height:min(100vh,1100px);}
+.superapp-preview-img{aspect-ratio:16/9;max-height:80vh;object-fit:cover;object-position:center 70%;}
+.ipad-mockup-wrap img{aspect-ratio:16/9;max-height:80vh;object-fit:cover;object-position:center;}
+@media(min-width:1921px){
+  .hero,.selector-section,.case-content,.outros-section,.formacao-section,.case-nav-section,footer{max-width:1920px;margin-left:auto !important;margin-right:auto !important;}
+  .hero{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);}
+  nav{padding-left:calc((100vw - 1920px)/2 + 56px) !important;padding-right:calc((100vw - 1920px)/2 + 56px) !important;}
+}
+@media(max-width:600px){
+  #sobre .section-header,#trajetoria .section-header,#estudos .section-header{flex-direction:column;align-items:flex-start;gap:6px;}
+  .sobre-label{font-size:10px;top:18px;left:18px;max-width:46%;}
+  .sobre-tag{top:16px;right:14px;padding:6px 11px 6px 8px;font-size:10px;}
+  .sobre-statement{left:20px;right:20px;bottom:22px;}
+}
+.hero-year{color:var(--text);padding:14px 8px;border-radius:100px;border:1px solid var(--border-hover);background:var(--surface);background:color-mix(in srgb,var(--surface) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
 </style>
 </head>
 <body>
 
 <nav>
   <a href="#" class="nav-logo">Rafael Paulosi</a>
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="#sobre">Sobre</a>
+    <a href="#trajetoria">Trajetória</a>
     <a href="#projetos">Projetos</a>
     <a href="#outros">Outros projetos</a>
     <a href="#estudos">Estudos</a>
@@ -1610,9 +1747,15 @@ footer {
     <a href="https://www.linkedin.com/in/rafaelpaulosi" target="_blank" rel="noopener">LinkedIn</a>
     <a href="mailto:rafael.rpaulosi@gmail.com">Contato</a>
   </div>
-  <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
-    <span class="icon">🌙</span><span id="themeLabel">Dark</span>
-  </button>
+  <div class="nav-actions">
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" type="button" aria-label="Mudar para o tema claro" title="Mudar para o tema claro">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" type="button" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
 </nav>
 
 <section class="hero">
@@ -1637,23 +1780,103 @@ footer {
     <span class="section-header-sub">Quem está por trás dos projetos</span>
   </div>
   <div class="sobre-grid">
-    <img class="sobre-foto" src="img/about/rafael.webp" width="1200" height="1500" loading="lazy" decoding="async" alt="Retrato de Rafael Paulosi, de óculos e suéter cinza, olhando para a câmera">
+    <figure class="sobre-card">
+      <img src="img/about/rafael.webp" width="1200" height="1500" loading="lazy" decoding="async" alt="Retrato de Rafael Paulosi, de óculos e suéter cinza, olhando para a câmera">
+      <div class="sobre-shade"></div>
+      <div class="sobre-label">Rafael Paulosi<span>Product Designer</span></div>
+    </figure>
     <div class="sobre-texto">
-      <p>Sou o Rafael, Product Designer de Ponta Grossa (PR). Antes do design, me formei em Engenharia de Computação, e isso mudou a forma como projeto: converso com quem desenvolve, valido APIs e penso em viabilidade desde o primeiro rascunho.</p>
-      <p>Nos últimos anos trabalhei dentro do ecossistema Unimed: construí Design Systems do zero, redesenhei sistemas legados e fui o único UX Designer da convergência de mais de 200 aplicativos em um SuperApp com mais de 2 milhões de downloads.</p>
-      <p>Gosto de problemas complexos, com muitas regras e vários perfis de usuário, e de transformá-los em fluxos claros. Uso IA no meu processo, sempre com revisão humana. Hoje busco um time de produto onde eu possa cuidar do problema de ponta a ponta.</p>
-      <div class="sobre-fatos">
-        <div class="sobre-fato"><div class="sobre-fato-label">Base</div><div class="sobre-fato-valor">Ponta Grossa, PR</div></div>
-        <div class="sobre-fato"><div class="sobre-fato-label">Modelo de trabalho</div><div class="sobre-fato-valor">Remoto ou híbrido</div></div>
-        <div class="sobre-fato"><div class="sobre-fato-label">Formação</div><div class="sobre-fato-valor">Engenharia de Computação (UEPG, conclusão em 12/2026) e UX, UI e Product Design (UX Unicórnio)</div></div>
-        <div class="sobre-fato"><div class="sobre-fato-label">Ferramentas</div><div class="sobre-fato-valor">Figma, Miro, Maze, Jira, Azure DevOps, Claude Code</div></div>
+      <h3 class="sobre-titulo">Do corte de vídeo ao <em>fluxo de produto</em></h3>
+      <ol class="sobre-cap">
+        <li>
+          <div class="sobre-cap-head"><span class="sobre-cap-num">01</span><span class="sobre-cap-nome">Imagem</span></div>
+          <p>Comecei a trabalhar com imagem antes de trabalhar com interface. Por mais de três anos fui editor de vídeo no grupo Barbieiro Comunicações, e ali aprendi o que ainda guia o meu design: ritmo, composição e a capacidade de provocar emoção com poucos elementos. Um corte errado quebra a cena, e um passo errado quebra um fluxo.</p>
+        </li>
+        <li>
+          <div class="sobre-cap-head"><span class="sobre-cap-num">02</span><span class="sobre-cap-nome">Código e UX</span></div>
+          <p>Depois fui para a Engenharia de Computação, onde conheci documentação, levantamento de requisitos, programação, engenharia de software e APIs. Foi ali que aprendi a falar a língua de quem desenvolve. Em seguida veio o UX: fiz o curso de UX, UI e Product Design do UX Unicórnio, com pesquisa, estratégia e interface, e comecei a carreira como júnior. Desde então evoluí na prática, projeto a projeto, até o design de produto.</p>
+        </li>
+        <li>
+          <div class="sobre-cap-head"><span class="sobre-cap-num">03</span><span class="sobre-cap-nome">Produto</span></div>
+          <p>Aprendi que tela bonita, sozinha, não faz um bom software. Trabalho com análise cognitiva, redução de atrito e com as heurísticas de Nielsen e Norman para embasar cada decisão. No ecossistema Unimed, construí Design Systems do zero e fui o único UX Designer da convergência de mais de 200 aplicativos em um SuperApp com mais de 2 milhões de downloads.</p>
+        </li>
+        <li>
+          <div class="sobre-cap-head"><span class="sobre-cap-num">04</span><span class="sobre-cap-nome">IA</span></div>
+          <p>Depois somei a IA a essa base. Fiz o IAUX Lab e hoje curso o IA Creative, para acelerar o processo sem deixar a interface com cara de IA. Busco interfaces que funcionem, atendam aos requisitos e reduzam perdas e atrito. Também busco que passem emoção: quem olha sente que o fluxo conduziu com eficiência, sem aquela aparência genérica em que tudo parece igual. Uma interface bonita, sem cara de IA e rápida de entregar. É isso que eu prezo.</p>
+        </li>
+      </ol>
+      <div class="sobre-stats">
+        <div class="sobre-stat"><b>+2M</b><span>downloads no SuperApp Unimed</span></div>
+        <div class="sobre-stat"><b>+200</b><span>aplicativos unificados em um só</span></div>
+        <div class="sobre-stat"><b>60+</b><span>telas redesenhadas no eMed4all</span></div>
       </div>
-      <div class="sobre-acoes">
-        <a class="sobre-btn sobre-btn--primario" href="assets/Rafael_Paulosi_Curriculo_2026.pdf" download>Baixar currículo</a>
-        <a class="sobre-btn" href="https://www.linkedin.com/in/rafaelpaulosi" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="sobre-btn" href="mailto:rafael.rpaulosi@gmail.com">Enviar e-mail</a>
+      <div class="sobre-meta">
+        <span>Ponta Grossa, PR</span>
+        <span>Remoto ou híbrido</span>
+        <span>Engenharia de Computação</span>
+        <span>UX, UI e Product Design (UX Unicórnio)</span>
+      </div>
+      <div class="sobre-links">
+        <div class="sobre-links-label">Links</div>
+        <a href="assets/Rafael_Paulosi_Curriculo_2026.pdf" download>Baixar currículo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m0 0-6-6m6 6 6-6"/></svg></a>
+        <a href="https://www.linkedin.com/in/rafaelpaulosi" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <a href="https://medium.com/@rafael.rpaulosi" target="_blank" rel="noopener">Medium <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <a href="mailto:rafael.rpaulosi@gmail.com">E-mail <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- TRAJETORIA -->
+<section id="trajetoria" class="outros-section">
+  <div class="section-header">
+    <h2 class="section-header-title">Trajetória</h2>
+    <span class="section-header-sub">Do vídeo ao produto digital</span>
+  </div>
+  <div class="traj-grid">
+    <div class="traj-label"><i></i>Linha do tempo</div>
+    <ol class="traj-list">
+        <li class="traj-item">
+          <div class="traj-ano">2011 a 2014</div>
+          <div class="traj-titulo">Editor de vídeo<span class="traj-org">Grupo Barbieiro Comunicações</span></div>
+          <p class="traj-desc">Ritmo, composição e emoção com poucos elementos.</p>
+        </li>
+        <li class="traj-item">
+          <div class="traj-ano">2016</div>
+          <div class="traj-titulo">Engenharia de Computação<span class="traj-org">UEPG</span></div>
+          <p class="traj-desc">Requisitos, programação, engenharia de software e APIs.</p>
+        </li>
+        <li class="traj-item">
+          <div class="traj-ano">2019 a 2021</div>
+          <div class="traj-titulo">Desenvolvimento e suporte técnico<span class="traj-org">NTI UEPG e Inovais</span></div>
+          <p class="traj-desc">PHP, WordPress e Laravel. Suporte nível 2 e QA.</p>
+        </li>
+        <li class="traj-item">
+          <div class="traj-ano">2021</div>
+          <div class="traj-titulo">UX, UI e Product Design<span class="traj-org">UX Unicórnio</span></div>
+          <p class="traj-desc">Pesquisa, estratégia e interface. Case Edooca.</p>
+        </li>
+        <li class="traj-item">
+          <div class="traj-ano">2021 a 2023</div>
+          <div class="traj-titulo">Analista de Requisitos e UX<span class="traj-org">KMM by nstech</span></div>
+          <p class="traj-desc">ERPs de logística (TMS, WMS e YMS) para Rumo e Brado Logística.</p>
+        </li>
+        <li class="traj-item">
+          <div class="traj-ano">2023 a 2025</div>
+          <div class="traj-titulo">Product Designer<span class="traj-org">Univision</span></div>
+          <p class="traj-desc">eMed4all, tCuida e Design System do zero.</p>
+        </li>
+        <li class="traj-item">
+          <div class="traj-ano">2025 a 2026</div>
+          <div class="traj-titulo">Product Designer<span class="traj-org">Yuni Digital</span></div>
+          <p class="traj-desc">Único UX Designer na convergência de +200 apps em um SuperApp (+2M de downloads).</p>
+        </li>
+        <li class="traj-item is-hoje">
+          <div class="traj-ano">2025</div>
+          <div class="traj-titulo">IA aplicada ao design<span class="traj-hoje">Hoje</span><span class="traj-org">IAUX Lab e IA Creative</span></div>
+          <p class="traj-desc">IA no processo, sem cara de IA na interface.</p>
+        </li>
+    </ol>
   </div>
 </section>
 
@@ -1739,7 +1962,6 @@ footer {
 
       <!-- DS COVER -->
       <div class="ds-cover-block">
-        <img src="img/emed/ds-cover.webp" alt="eMed Design System: Cover" width="2028" height="1068" loading="lazy">
         <div class="ds-cover-meta">
           <div>
             <div class="ds-cover-eyebrow">Design System</div>
@@ -1962,7 +2184,7 @@ footer {
 
   <div class="desafios-section">
     <div class="section-eyebrow" style="padding-left:80px;padding-right:80px;padding-top:0;">Desafios</div>
-    <div class="desafios-grid" style="padding-left:80px;padding-right:80px;">
+    <div class="desafios-grid desafios-grid--solo" style="padding-left:80px;padding-right:80px;">
       <div>
         <h3 class="section-heading" style="padding:0;margin-bottom:32px;">O que precisávamos resolver</h3>
         <ul class="desafios-list">
@@ -1973,9 +2195,6 @@ footer {
         <li><span class="desafio-num">05</span>Eliminar inconsistências de linguagem: mensagens, labels e feedbacks que geravam erros operacionais e abertura de chamados desnecessários</li>
         <li><span class="desafio-num">06</span>Validar cada módulo com engenharia para garantir viabilidade técnica, encurtando o ciclo de revisão e acelerando entregas subsequentes</li>
       </ul>
-      </div>
-      <div class="desafio-bleed-col">
-        <img src="img/emed/design.webp" alt="eMed4all: Design System" class="desafio-img-bleed" loading="lazy">
       </div>
     </div>
   </div>
@@ -2512,31 +2731,24 @@ footer {
   </div>
   <div class="habilidades-wrap">
     <div class="habilidades-title">Habilidades</div>
-    <div class="habilidades-group-title">Design e produto</div>
-    <div class="habilidades-grid habilidades-grid--auto">
+    <div class="habilidades-grid">
       <div class="habilidade">UX Design</div>
       <div class="habilidade">Product Design</div>
       <div class="habilidade">UI Design</div>
       <div class="habilidade">Design Systems</div>
+      <div class="habilidade">UX Research</div>
+      <div class="habilidade">Testes de Usabilidade</div>
       <div class="habilidade">Prototipação</div>
       <div class="habilidade">User Flows</div>
       <div class="habilidade">Arquitetura da Informação</div>
       <div class="habilidade">Interaction Design</div>
       <div class="habilidade">Design Thinking</div>
       <div class="habilidade">Mobile Design</div>
-    </div>
-    <div class="habilidades-group-title">Pesquisa e estratégia</div>
-    <div class="habilidades-grid habilidades-grid--auto">
-      <div class="habilidade">UX Research</div>
-      <div class="habilidade">Testes de Usabilidade</div>
       <div class="habilidade">Avaliação Heurística</div>
       <div class="habilidade">Jornada do Usuário</div>
       <div class="habilidade">UX Writing</div>
       <div class="habilidade">Workshops de Co-criação</div>
       <div class="habilidade">Análise de Requisitos</div>
-    </div>
-    <div class="habilidades-group-title">Ferramentas</div>
-    <div class="habilidades-grid habilidades-grid--auto">
       <div class="habilidade">Figma</div>
       <div class="habilidade">Figma MCP</div>
       <div class="habilidade">Miro</div>
@@ -2545,9 +2757,6 @@ footer {
       <div class="habilidade">Jira</div>
       <div class="habilidade">Azure DevOps</div>
       <div class="habilidade">Claude Code</div>
-    </div>
-    <div class="habilidades-group-title">Técnico e processo</div>
-    <div class="habilidades-grid habilidades-grid--auto">
       <div class="habilidade">APIs REST</div>
       <div class="habilidade">Scrum</div>
       <div class="habilidade">IA aplicada ao Design</div>
@@ -2568,36 +2777,104 @@ footer {
 </footer>
 
 <script>
+function applyThemeUi() {
+  const light = document.documentElement.getAttribute('data-theme') === 'light';
+  const btn = document.getElementById('themeBtn');
+  if (!btn) return;
+  const t = light ? 'Mudar para o tema escuro' : 'Mudar para o tema claro';
+  btn.setAttribute('aria-label', t);
+  btn.setAttribute('title', t);
+}
 function toggleTheme() {
   const html = document.documentElement;
-  const btn = document.getElementById('themeBtn');
-  const label = document.getElementById('themeLabel');
-  const icon = btn.querySelector('.icon');
-  if (html.getAttribute('data-theme') === 'light') {
-    html.removeAttribute('data-theme');
-    icon.textContent = '🌙';
-    label.textContent = 'Dark';
-    localStorage.setItem('theme', 'dark');
-  } else {
-    html.setAttribute('data-theme', 'light');
-    icon.textContent = '☀️';
-    label.textContent = 'Light';
-    localStorage.setItem('theme', 'light');
-  }
+  const light = html.getAttribute('data-theme') === 'light';
+  if (light) html.removeAttribute('data-theme'); else html.setAttribute('data-theme', 'light');
+  try { localStorage.setItem('theme', light ? 'dark' : 'light'); } catch (e) {}
+  applyThemeUi();
 }
-// Aplicar tema salvo ao carregar
 (function() {
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.addEventListener('DOMContentLoaded', function() {
-      const btn = document.getElementById('themeBtn');
-      if (btn) {
-        btn.querySelector('.icon').textContent = '☀️';
-        document.getElementById('themeLabel').textContent = 'Light';
-      }
+  let saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  document.addEventListener('DOMContentLoaded', applyThemeUi);
+})();
+function toggleMenu(force) {
+  const nav = document.querySelector('nav');
+  const open = typeof force === 'boolean' ? force : !nav.classList.contains('menu-open');
+  nav.classList.toggle('menu-open', open);
+  const b = document.getElementById('navToggle');
+  if (b) { b.setAttribute('aria-expanded', open); b.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu'); }
+}
+document.addEventListener('click', function(e) { if (e.target.closest('.nav-links a')) toggleMenu(false); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') toggleMenu(false); });
+window.addEventListener('resize', function() { if (window.innerWidth > 1100) toggleMenu(false); });
+
+(function() {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function splitWords(el) {
+    var i = 0;
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function(n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function(t) {
+            if (!t) return;
+            if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var w = document.createElement('span'); w.className = 'wd';
+            var inner = document.createElement('span'); inner.className = 'wi';
+            inner.textContent = t; inner.style.transitionDelay = (i++ * 70) + 'ms';
+            w.appendChild(inner); frag.appendChild(w);
+          });
+          n.parentNode.replaceChild(frag, n);
+        } else if (n.nodeType === 1 && n.tagName !== 'BR') { walk(n); }
+      });
+    })(el);
+    el.classList.add('rv-words');
+  }
+  function init() {
+    var words = document.querySelectorAll('.hero-title, .sobre-titulo');
+    var boxes = ['.hero-eyebrow', '.hero-desc', '.hero-stats',
+      '#sobre .section-header', '#sobre .sobre-card', '#sobre .sobre-cap li', '#sobre .sobre-stat', '#sobre .sobre-meta', '#sobre .sobre-links',
+      '#trajetoria .section-header', '.traj-label', '.traj-item',
+      '#estudos .section-header', '#estudos .outro-card', '.estudos-mais',
+      '#outros .section-header', '#outros .outro-card',
+      '#formacao .section-header', '#formacao .formacao-col-title', '#formacao .formacao-item', '#formacao .curso-item',
+      '.habilidades-title', '.habilidade'];
+    var els = [];
+    words.forEach(function(el) { splitWords(el); els.push(el); });
+    boxes.forEach(function(sel) {
+      var counters = new Map();
+      document.querySelectorAll(sel).forEach(function(el) {
+        if (el.closest('.case-content')) return;
+        var parent = el.parentElement;
+        var idx = counters.get(parent) || 0; counters.set(parent, idx + 1);
+        var fine = el.classList.contains('habilidade');
+        var step = fine ? 25 : 90;
+        var cap = fine ? 375 : 450;
+        el.style.setProperty('--d', Math.min(idx * step, cap) + 'ms');
+        el.classList.add('rv'); els.push(el);
+      });
+    });
+    function show(el) {
+      el.classList.add('in');
+      if (!el.classList.contains('rv-words')) setTimeout(function() { el.classList.remove('rv', 'in'); }, 1900);
+    }
+    if (reduce || !('IntersectionObserver' in window)) { els.forEach(function(el) { el.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(function(el) { io.observe(el); });
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        els.forEach(function(el) {
+          if (el.classList.contains('in')) return;
+          var r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.95 && r.bottom > 0) { show(el); io.unobserve(el); }
+        });
+      }, 2500);
     });
   }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 
 function showProject(name, card) {
